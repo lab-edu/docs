@@ -1,0 +1,12 @@
+site_name: lab-edu 文档
+site_description: 文档中心 — 汇集系统架构、API 与部署 / 使用指南，助力快速上手与团队协作
+repo_url: https://github.com/lab-edu/docs
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.tabs
+nav:
+  - Home: index.md
+plugins:
+  - search
