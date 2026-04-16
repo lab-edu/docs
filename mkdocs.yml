@@ -1,12 +1,64 @@
-site_name: lab-edu 文档
+site_name: lab-edu 文档中心
 site_description: 文档中心 — 汇集系统架构、API 与部署 / 使用指南，助力快速上手与团队协作
 repo_url: https://github.com/lab-edu/docs
+
 theme:
-  name: material
+  name: terminal
+  language: zh
   features:
-    - navigation.instant
-    - navigation.tabs
+    - footer.prev_next
+    - navigation.side.indexes
+
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.0/highlight.min.js
+  - https://unpkg.com/highlightjs-cobol/dist/cobol.min.js
+  - hl.js
+
+extra_css:
+  - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.0/styles/a11y-light.min.css
+
 nav:
-  - Home: index.md
+  - 首页:
+    - Index: index.md
+  - 开发指南:
+    - Index: guides/index.md
+    - Git 工作流: guides/git-workflow.md
+    - DevOps 基础: guides/devops.md
+    - 故障排查: guides/troubleshooting.md
+  - 阶段规划:
+    - Index: phases/index.md
+    - Phase 0: phases/phase0.md
+    - Phase 1: phases/phase1.md
+    - Phase 2: phases/phase2.md
+    - Phase 3: phases/phase3.md
+    - Phase 4: phases/phase4.md
+  - 架构设计:
+    - Index: architecture/index.md
+    - 模块边界: architecture/modules.md
+    - 技术选型: architecture/tech-stack.md
+    - 通信方式: architecture/communication.md
+    - 数据模型: architecture/data-model.md
+  - 参考资料:
+    - Index: reference/index.md
+    - API 规范: reference/api.md
+    - 配置约定: reference/config.md
+
 plugins:
   - search
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - meta
+  - tables
+  - toc:
+      permalink: " #"
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.snippets:
+      base_path:
+        - docs
