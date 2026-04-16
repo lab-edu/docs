@@ -5,7 +5,7 @@
 ## 参考清单
 
 - [API 规范](api.md): OpenAPI + Swagger UI、版本前缀、返回结构
-- [Git 规则](git-workflow.md): 分支命名、PR 要求、合并门禁
+- [Git 工作流](../guides/git-workflow.md): 分支命名、PR 要求、合并门禁
 - [配置约定](config.md): `.env`、端口、部署参数与运行开关
 
 ## 速查原则

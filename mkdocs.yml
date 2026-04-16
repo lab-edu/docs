@@ -41,7 +41,6 @@ nav:
   - 参考资料:
     - Index: reference/index.md
     - API 规范: reference/api.md
-    - Git 规则: reference/git-workflow.md
     - 配置约定: reference/config.md
 
 plugins:
