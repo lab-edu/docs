@@ -4,7 +4,7 @@
 
 ## 先看什么
 
-- core 的 `/api/health` 是否返回正常
+- core 的 `/actuator/health` 是否返回正常
 - web 是否能通过同源入口请求到 core
 - nginx 是否正确转发 `/api/` 和页面请求
 - 数据库容器是否已就绪

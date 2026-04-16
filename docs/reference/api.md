@@ -7,6 +7,17 @@
 - API 版本前缀统一使用 `/api/v1`
 - 返回结构统一为 `code`、`message`、`data`
 - 接口文档统一采用 OpenAPI + Swagger UI
+- 健康检查统一使用 `/actuator/health`
+
+## core 基础接口（Phase 0）
+
+- Swagger UI: `GET /swagger-ui.html`
+- OpenAPI JSON: `GET /v3/api-docs`
+- 健康检查（Actuator）: `GET /actuator/health`
+
+说明：
+- 以上健康检查和 Swagger 文档接口允许匿名访问。
+- 其他业务接口默认需要认证（HTTP Basic，后续可迁移到 JWT）。
 
 ## 设计原则
 
