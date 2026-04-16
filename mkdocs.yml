@@ -22,6 +22,9 @@ nav:
     - Index: index.md
   - 开发指南:
     - Index: guides/index.md
+    - Git 工作流: guides/git-workflow.md
+    - DevOps 基础: guides/devops.md
+    - 故障排查: guides/troubleshooting.md
   - 阶段规划:
     - Index: phases/index.md
     - Phase 0: phases/phase0.md
@@ -31,8 +34,15 @@ nav:
     - Phase 4: phases/phase4.md
   - 架构设计:
     - Index: architecture/index.md
+    - 模块边界: architecture/modules.md
+    - 技术选型: architecture/tech-stack.md
+    - 通信方式: architecture/communication.md
+    - 数据模型: architecture/data-model.md
   - 参考资料:
     - Index: reference/index.md
+    - API 规范: reference/api.md
+    - Git 规则: reference/git-workflow.md
+    - 配置约定: reference/config.md
 
 plugins:
   - search
@@ -51,5 +61,5 @@ markdown_extensions:
   - pymdownx.mark
   - pymdownx.tilde
   - pymdownx.snippets:
-      base_path: 
+      base_path:
         - docs

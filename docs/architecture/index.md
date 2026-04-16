@@ -4,9 +4,10 @@
 
 ## 核心文档
 
-- 系统架构: 模块划分、通信方式、部署拓扑
-- 模块边界: web / core / ai-service / fpga-service 职责
-- 数据模型: 核心实体关系与演进约束
+- [模块边界](modules.md): web / core / ai-service / fpga-service 的职责边界
+- [技术选型](tech-stack.md): 前端、后端、数据库与预留服务的基线
+- [通信方式](communication.md): 模块之间的接口约定与版本规则
+- [数据模型](data-model.md): 核心实体关系与演进约束
 
 ## 架构约束
 

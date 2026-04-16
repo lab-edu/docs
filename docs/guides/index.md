@@ -4,10 +4,9 @@
 
 ## 实用手册
 
-- 开发流程: Git 工作流、Commit 规范、Code Review 要点
-- 联调测试: 核心链路验证与异常场景测试
-- 部署上线: Docker、Compose、CI 流程与运行检查
-- 故障排查: 日志、健康检查、问题复现与回归
+- [Git 工作流](git-workflow.md): 分支、提交、PR 与 Review 规则
+- [DevOps 基础](devops.md): Docker、Compose、环境变量与启动方式
+- [故障排查](troubleshooting.md): 日志、健康检查、问题复现与回归
 
 ## 关联阅读
 
