@@ -1,15 +1,17 @@
 # API 规范
 
-这一页记录 Phase 0 已经明确下来的接口约定。
+这一页记录当前阶段已经落地的接口约定，作为前后端联调的统一依据。
 
 ## 统一规则
 
 - API 版本前缀统一使用 `/api/v1`
 - 返回结构统一为 `code`、`message`、`data`
+- 登录态通过 JWT 管理，登录成功后由后端写入 `HttpOnly` Cookie，Cookie 名称为 `lab_edu_token`
+- 后端同时接受 `Authorization: Bearer <token>` 形式，方便接口调试
 - 接口文档统一采用 OpenAPI + Swagger UI
 - 健康检查统一使用 `/actuator/health`
 
-## core 基础接口（Phase 0）
+## 基础接口
 
 - Swagger UI: `GET /swagger-ui.html`
 - OpenAPI JSON: `GET /v3/api-docs`
@@ -17,15 +19,64 @@
 
 说明：
 - 以上健康检查和 Swagger 文档接口允许匿名访问。
-- 其他业务接口默认需要认证（HTTP Basic，后续可迁移到 JWT）。
+- 其他业务接口默认需要认证，除注册与登录外都必须带上有效 JWT。
+
+## 用户模块
+
+- 用户注册: `POST /api/v1/auth/register`
+- 用户登录: `POST /api/v1/auth/login`
+- 当前用户信息: `GET /api/v1/auth/me`
+
+注册请求字段：
+- `username`
+- `email`
+- `password`
+- `displayName`，可选
+- `role`，可选，当前支持 `STUDENT` 和 `TEACHER`
+
+登录请求字段：
+- `identifier`，支持用户名或邮箱
+- `password`
+
+## 课程模块
+
+- 创建课程: `POST /api/v1/courses`
+- 课程列表: `GET /api/v1/courses`
+- 课程详情: `GET /api/v1/courses/{courseId}`
+- 加入课程: `POST /api/v1/courses/join`
+- 课程成员: `GET /api/v1/courses/{courseId}/members`
+
+课程创建请求字段：
+- `title`
+- `description`
+
+加入课程请求字段：
+- `inviteCode`
+
+## 实验模块
+
+- 发布实验: `POST /api/v1/courses/{courseId}/experiments`
+- 实验列表: `GET /api/v1/courses/{courseId}/experiments`
+- 实验详情: `GET /api/v1/courses/{courseId}/experiments/{experimentId}`
+
+实验创建请求字段：
+- `title`
+- `description`
+- `dueAt`
+
+## 提交模块
+
+- 提交实验: `POST /api/v1/experiments/{experimentId}/submissions`
+- 提交列表: `GET /api/v1/experiments/{experimentId}/submissions`
+- 当前用户最新提交: `GET /api/v1/experiments/{experimentId}/submissions/latest`
+
+提交接口使用 `multipart/form-data`，其中：
+- `file` 必填
+- `note` 可选
 
 ## 设计原则
 
 - 路径语义清晰
 - 请求和响应都要可文档化
 - 前后端对字段名称保持一致
-
-## 说明
-
-- 目前还没有把所有业务接口展开到文档里
-- 后续新增接口时，先补文档，再补实现
+- 教师和学生的权限边界要由后端统一控制
