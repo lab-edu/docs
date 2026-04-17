@@ -26,6 +26,7 @@
 - 用户注册: `POST /api/v1/auth/register`
 - 用户登录: `POST /api/v1/auth/login`
 - 当前用户信息: `GET /api/v1/auth/me`
+- 用户退出登录: `POST /api/v1/auth/logout`
 
 注册请求字段：
 - `username`
@@ -37,6 +38,10 @@
 登录请求字段：
 - `identifier`，支持用户名或邮箱
 - `password`
+
+登录与退出说明：
+- 登录成功后后端会下发 `lab_edu_token`（HttpOnly Cookie）。
+- `POST /api/v1/auth/logout` 会清空该 Cookie，前端应主动跳回登录页。
 
 ## 课程模块
 
@@ -80,3 +85,25 @@
 - 请求和响应都要可文档化
 - 前后端对字段名称保持一致
 - 教师和学生的权限边界要由后端统一控制
+
+## 前端路由与 API 对齐
+
+- 登录页: `/login`
+- 课程列表页: `/courses`
+- 课程详情页: `/courses/{courseId}`
+- 实验详情页: `/experiments/{experimentId}?courseId={courseId}`
+
+联调约定：
+- 前端统一通过 `/core/api/v1/*` 访问后端，避免在页面里直接拼装后端地址。
+- 请求层统一附带 `credentials: include`，使用 HttpOnly Cookie 传递 JWT。
+- 返回结构统一解析 `code/message/data`，并在 401/403 场景给出可理解提示。
+
+## 常见错误码
+
+- `40100` 未登录或登录已过期
+- `40300` 无权限访问该资源
+- `40000` 参数错误或请求体格式不正确
+- `40001` 参数校验失败
+- `404xx` 资源不存在
+- `409xx` 资源冲突（例如重复加入）
+- `50000` 服务器内部错误
