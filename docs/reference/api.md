@@ -50,6 +50,8 @@
 - 课程详情: `GET /api/v1/courses/{courseId}`
 - 加入课程: `POST /api/v1/courses/join`
 - 课程成员: `GET /api/v1/courses/{courseId}/members`
+- 课程公告列表: `GET /api/v1/courses/{courseId}/announcements`
+- 教师发布公告: `POST /api/v1/courses/{courseId}/announcements`
 
 课程创建请求字段：
 - `title`
@@ -74,10 +76,37 @@
 - 提交实验: `POST /api/v1/experiments/{experimentId}/submissions`
 - 提交列表: `GET /api/v1/experiments/{experimentId}/submissions`
 - 当前用户最新提交: `GET /api/v1/experiments/{experimentId}/submissions/latest`
+- 教师评分: `PATCH /api/v1/submissions/{submissionId}/grade`
 
 提交接口使用 `multipart/form-data`，其中：
 - `file` 必填
 - `note` 可选
+
+评分请求字段：
+- `score`，范围 `0-100`
+- `feedback`，可选
+
+## 资源模块
+
+- 教师上传资源: `POST /api/v1/courses/{courseId}/resources`
+- 课程资源列表: `GET /api/v1/courses/{courseId}/resources`
+- 文件资源访问: `GET /api/v1/resources/{resourceId}/file`
+
+资源上传接口使用 `multipart/form-data`，其中：
+- `name` 必填
+- `type` 必填，支持 `FILE`、`VIDEO`、`LINK`
+- `category` 可选
+- `file` 当 `type=FILE` 时必填
+- `externalUrl` 当 `type=VIDEO/LINK` 时必填（仅支持 `http/https`）
+
+## 成绩汇总模块
+
+- 课程成绩汇总（教师）: `GET /api/v1/courses/{courseId}/grades/overview`
+
+返回结构说明：
+- `students` 为课程内学生列表
+- 每个学生包含 `submissionCount`、`gradedCount`、`averageScore`
+- `experiments` 为该学生已提交实验的评分明细
 
 ## 设计原则
 
