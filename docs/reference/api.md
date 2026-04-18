@@ -50,6 +50,8 @@
 - 课程详情: `GET /api/v1/courses/{courseId}`
 - 加入课程: `POST /api/v1/courses/join`
 - 课程成员: `GET /api/v1/courses/{courseId}/members`
+- 课程公告列表: `GET /api/v1/courses/{courseId}/announcements`
+- 教师发布公告: `POST /api/v1/courses/{courseId}/announcements`
 
 课程创建请求字段：
 - `title`
