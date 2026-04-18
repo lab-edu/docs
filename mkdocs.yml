@@ -25,6 +25,7 @@ nav:
     - Git 工作流: guides/git-workflow.md
     - DevOps 基础: guides/devops.md
     - 故障排查: guides/troubleshooting.md
+    - 课程学习功能: guides/course-learning.md
   - 阶段规划:
     - Index: phases/index.md
     - Phase 0: phases/phase0.md
