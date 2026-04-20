@@ -25,6 +25,7 @@ nav:
     - Git 工作流: guides/git-workflow.md
     - DevOps 基础: guides/devops.md
     - 故障排查: guides/troubleshooting.md
+    - 课程学习功能: guides/course-learning.md
   - 阶段规划:
     - Index: phases/index.md
     - Phase 0: phases/phase0.md
@@ -38,9 +39,11 @@ nav:
     - 技术选型: architecture/tech-stack.md
     - 通信方式: architecture/communication.md
     - 数据模型: architecture/data-model.md
+    - 课堂工作区与作业提醒架构: architecture/classroom-workspace.md
   - 参考资料:
     - Index: reference/index.md
     - API 规范: reference/api.md
+    - 作业中心与提醒接口清单: reference/homework-reminder-api.md
     - 配置约定: reference/config.md
 
 plugins:

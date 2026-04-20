@@ -5,6 +5,7 @@
 ## 参考清单
 
 - [API 规范](api.md): OpenAPI + Swagger UI、版本前缀、返回结构
+- [作业中心与提醒接口清单](homework-reminder-api.md): 课程工作区模块开关、作业中心、提醒收件箱
 - [Git 工作流](../guides/git-workflow.md): 分支命名、PR 要求、合并门禁
 - [配置约定](config.md): `.env`、端口、部署参数与运行开关
 

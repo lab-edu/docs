@@ -7,6 +7,7 @@
 - [Git 工作流](git-workflow.md): 分支、提交、PR 与 Review 规则
 - [DevOps 基础](devops.md): Docker、Compose、环境变量与启动方式
 - [故障排查](troubleshooting.md): 日志、健康检查、问题复现与回归
+- [课程学习功能](course-learning.md): 单元、知识点、任务与答卷批阅
 
 ## 关联阅读
 
