@@ -6,8 +6,8 @@
 
 - API 版本前缀统一使用 `/api/v1`
 - 返回结构统一为 `code`、`message`、`data`
-- 登录态通过 JWT 管理，登录成功后由后端写入 `HttpOnly` Cookie，Cookie 名称为 `lab_edu_token`
-- 后端同时接受 `Authorization: Bearer <token>` 形式，方便接口调试
+- 用户登录后，系统会自动保持访问状态
+- 调试时也可以使用 `Authorization: Bearer <token>` 方式访问接口
 - 接口文档统一采用 OpenAPI + Swagger UI
 - 健康检查统一使用 `/actuator/health`
 
@@ -19,7 +19,7 @@
 
 说明：
 - 以上健康检查和 Swagger 文档接口允许匿名访问。
-- 其他业务接口默认需要认证，除注册与登录外都必须带上有效 JWT。
+- 其他业务接口默认需要登录，除注册与登录外都必须带上有效凭证。
 
 ## 用户模块
 
@@ -40,8 +40,8 @@
 - `password`
 
 登录与退出说明：
-- 登录成功后后端会下发 `lab_edu_token`（HttpOnly Cookie）。
-- `POST /api/v1/auth/logout` 会清空该 Cookie，前端应主动跳回登录页。
+- 登录成功后，系统会记录当前登录状态。
+- `POST /api/v1/auth/logout` 会结束当前登录状态，前端应主动跳回登录页。
 
 ## 课程模块
 
@@ -124,7 +124,7 @@
 
 联调约定：
 - 前端统一通过 `/core/api/v1/*` 访问后端，避免在页面里直接拼装后端地址。
-- 请求层统一附带 `credentials: include`，使用 HttpOnly Cookie 传递 JWT。
+- 请求层会自动携带登录状态。
 - 返回结构统一解析 `code/message/data`，并在 401/403 场景给出可理解提示。
 
 ## 常见错误码
